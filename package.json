@@ -1,0 +1,18 @@
+{
+  "name": "internetdefrance.com",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "build:css": "cp src/*.css dist/; node_modules/.bin/yuicompressor -o '.css$:.css' dist/*.css",
+    "build:js": "cp -r src/js dist/; node_modules/.bin/yuicompressor -o '.js$:.js' dist/js/*.js",
+    "build:html": "cp src/index.html dist/index.html",
+    "build:assets": "cp -r src/assets dist/",
+    "build": "npm run build:css; npm run build:js; npm run build:html; npm run build:assets"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "yuicompressor": "~2.4.8"
+  }
+}
