@@ -2,16 +2,6 @@ var TYPE_INTERVAL_MS = 5;
 var TYPE_INTERVAL_AFTER_PARAGRAPH_MS = 400;
 var BLINK_INTERVAL_MS = 300;
 var preventFancyJS = true;
-function activate () {
-    initAllTypeAnims($('.fr .anim-text'));
-    initAllTypeAnims($('.en .anim-text'));
-    $('.bigtext').bigtext();
-    showWebsite();
-    //$('.loading').removeClass('loading');
-}
-function showWebsite () {
-    $('.loading').addClass('ready');
-}
 // init all anims on all visible paragraphs
 function initAllTypeAnims (jquerySelector) {
     // create a carret or trailin '_'
@@ -71,8 +61,41 @@ function initAllTypeAnims (jquerySelector) {
         }
     }
 }
-// smooth scroll from https://css-tricks.com/snippets/jquery/smooth-scrolling/
+function showWebsite () {
+    $(document.body).addClass('ready');
+    $('.bigtext').bigtext();
+}
+setTimeout(showWebsite, 1000);
+
+function activate () {
+    initAllTypeAnims($('.fr .anim-text'));
+    initAllTypeAnims($('.en .anim-text'));
+    showWebsite();
+}
+// after page load
+try {
+  $(document.body).addClass('loading');
+  preventFancyJS = false;
+
+  WebFontConfig = {
+    google: { families: [ 'Roboto+Condensed::latin' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+  })();
+}
+catch(e) {
+
+}
 $(function() {
+  activate();
+  // smooth scroll from https://css-tricks.com/snippets/jquery/smooth-scrolling/
   $('a[href*=#]:not([href=#])').click(function() {
     if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'') && location.hostname == this.hostname) {
       var target = $(this.hash);
@@ -86,22 +109,3 @@ $(function() {
     }
   });
 });
-if('querySelectorAll' in document ) {
-    preventFancyJS = false;
-    WebFont.load({
-        custom: {
-            families: ['Roboto Condensed'], // font-family name
-            urls : ['http://fonts.googleapis.com/css?family=Roboto+Condensed:300'] // URL to css
-        },
-        active: function() {
-            activate();
-        }
-    });
-}
-// after page load
-$(function() {
-    if(preventFancyJS === true) {
-        showWebsite();
-    }
-});
-
