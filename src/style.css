@@ -10,6 +10,7 @@
     max-width : 940px;
     margin : auto;
     font-size : 1em;
+    line-height: 1.5em;
 }
 .bold {
     font-weight : bold;
@@ -51,6 +52,7 @@
     height : 20px;
     background-repeat : no-repeat;
     background-size : contain;
+    border-radius: 5px;
 }
 .fr .flag {
     background-image : url('assets/frog.jpg');
