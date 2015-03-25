@@ -26,10 +26,12 @@
     margin-top : 50px;
 }
 .logo .name {
-    text-align : center;
-    margin : auto;
-    font-weight : bold;
-    line-height : 1;
+    text-align: center;
+    margin-left: auto;
+    font-weight: bold;
+    line-height: 1;
+    margin-right: auto;
+    margin-top: 5px;
 }
 .home {
     min-height : 100vh;
