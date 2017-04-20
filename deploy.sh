@@ -6,4 +6,4 @@ git config --global user.name "Codeship CI"
 git add dist
 git commit -am "build"
 git push origin master
-git subtree push -f --prefix dist origin gh-pages
+git subtree push -f --prefix --rejoin dist origin gh-pages
