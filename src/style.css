@@ -74,11 +74,12 @@
     width : 90%;
     margin-left : 4%;
 }
-.contact-block input,
 .contact-block label,
 .contact-block textarea {
     width : 90%;
-    margin : auto;
+    display : block;
+}
+.contact-block input {
     display : block;
 }
 @media all and (max-width : 699px) {
